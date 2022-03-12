@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock title %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="container">
+	<div class="row mt-5">
+		<div class="col-md-6 offset-md-3">
+			<div class="border p-3 bg-white">
+				<div class="alert alert-danger text-center">
+					<h3>Welcome to our home page</h3>
+				</div>
+
+				<a class="btn btn-lg btn-info py-2 col-12 my-2 fs-3" href="#">Logged in as {{request.user.username}}</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% else %}
+<div class="container">
+	<div class="row mt-5">
+		<div class="col-md-6 offset-md-3">
+			<div class="border p-3 bg-white">
+				<div class="alert alert-danger text-center">
+					<h3>You are not logged in yet</h3>
+				</div>
+
+				<a class="btn btn-lg btn-info py-2 col-12 my-2 fs-3" href="{% url 'account_login' %}">Login</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endblock content %}

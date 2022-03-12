@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     # my apps
-    'courses.apps.CoursesConfig',
     'localusers.apps.LocalusersConfig',
+    'courses.apps.CoursesConfig',
     
     # allauth social authentication
     'allauth',
@@ -129,6 +130,10 @@ AUTHENTICATION_BACKENDS = [
 
 AUTH_USER_MODEL = 'localusers.CustomUser'
 
+LOGIN_URL = '/accounts/login'
+
+LOGIN_REDIRECT_URL = 'home'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -165,12 +170,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Django Email settings config
-email = config("MY_EMAIL_ADDRESS")
-password = config("MY_EMAIL_PASSWORD")
+# email = config("MY_EMAIL_ADDRESS")
+# password = config("MY_EMAIL_PASSWORD")
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # because am using gmail
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = email
-EMAIL_HOST_PASSWORD = password
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'  # because am using gmail
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = email
+# EMAIL_HOST_PASSWORD = password
+
+# SITE_ID = 1
+
+# send emails to terminal
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
