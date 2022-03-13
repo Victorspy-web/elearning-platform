@@ -5,6 +5,10 @@ from localusers.models import CustomUser
 
 
 class RegistrationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(RegistrationForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
     class Meta(UserCreationForm):
         model = CustomUser
@@ -26,7 +30,7 @@ class ProfileUpdateForm(UserChangeForm):
     )
     class Meta(UserChangeForm):
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'telephone', 'address')
+        fields = ('image', 'username', 'first_name', 'last_name', 'email', 'telephone', 'address')
 
 
 class AdminProfileUpdateForm(UserChangeForm):

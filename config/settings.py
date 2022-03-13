@@ -123,6 +123,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "OPTIONS": {
+            "min_length": 9,
+        },
+    }
+]
+
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
@@ -135,7 +144,17 @@ AUTH_USER_MODEL = 'localusers.CustomUser'
 LOGIN_URL = '/accounts/login'
 
 LOGIN_REDIRECT_URL = 'home'
-# LOGOUT_REDIRECT_URL = '/accounts/login'
+
+# Allauth 
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'home'
+
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'home'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'localusers.forms.RegistrationForm'
 
 ACCOUNT_EMAIL_REQUIRED = True
 
