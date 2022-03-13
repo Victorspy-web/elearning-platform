@@ -126,6 +126,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
+    
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 AUTH_USER_MODEL = 'localusers.CustomUser'
@@ -133,6 +135,11 @@ AUTH_USER_MODEL = 'localusers.CustomUser'
 LOGIN_URL = '/accounts/login'
 
 LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = '/accounts/login'
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 
 # Internationalization

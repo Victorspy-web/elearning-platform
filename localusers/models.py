@@ -11,6 +11,14 @@ class CustomUser(AbstractUser):
     image = models.ImageField(
         upload_to="static/img/admin_profile_images", null=True, blank=True)
     address = models.CharField(max_length=150, null=True, blank=True)
+    
+    # @property
+    # def image(self):
+    #     return self.image
+
+    # @image.setter
+    # def image(self, value):
+    #     self.image = value
 
     def __str__(self):
         return self.email

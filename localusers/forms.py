@@ -26,7 +26,7 @@ class ProfileUpdateForm(UserChangeForm):
     )
     class Meta(UserChangeForm):
         model = CustomUser
-        fields = ('image', 'username', 'first_name', 'last_name', 'email', 'telephone', 'address')
+        fields = ('username', 'first_name', 'last_name', 'email', 'telephone', 'address')
 
 
 class AdminProfileUpdateForm(UserChangeForm):
