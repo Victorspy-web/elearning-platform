@@ -6,8 +6,9 @@ from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
-    telephone = models.CharField(max_length=15)
+    username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
+    telephone = models.CharField(max_length=15)
     image = models.ImageField(upload_to="static/img/admin_profile_images", null=True, blank=True)
     address = models.CharField(max_length=150, null=True, blank=True)
 

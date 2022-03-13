@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    
+
     # my apps
     'localusers.apps.LocalusersConfig',
     'courses.apps.CoursesConfig',
-    
+
     # allauth social authentication
     'allauth',
     'allauth.account',
@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.linkedin',
     'allauth.socialaccount.providers.github',
-    
+
     # third party apps
     'ckeditor',
     'crispy_forms',
@@ -123,6 +123,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'localusers.CustomUser'
+
+
+# Allauth custom authentication settings
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
@@ -135,17 +140,10 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-    
+
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-AUTH_USER_MODEL = 'localusers.CustomUser'
-
-LOGIN_URL = '/accounts/login'
-
-LOGIN_REDIRECT_URL = 'home'
-
-# Allauth 
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'home'
 
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'home'
@@ -159,6 +157,12 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'localusers.forms.RegistrationForm'
 ACCOUNT_EMAIL_REQUIRED = True
 
 ACCOUNT_EMAIL_VERIFICATION = "optional"
+
+
+# Login directions
+LOGIN_URL = '/accounts/login'
+
+LOGIN_REDIRECT_URL = 'home'
 
 
 # Internationalization
