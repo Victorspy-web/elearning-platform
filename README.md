@@ -22,6 +22,7 @@ Django Elearning Platform
 <br>
 
 * Get the app client ID and secret key and it to the Social application
+	* Don't forget to move sites to chosen sites
 
 
 ![Screenshot of instuction](appDetails.png)
