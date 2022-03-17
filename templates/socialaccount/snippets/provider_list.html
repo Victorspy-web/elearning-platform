@@ -12,7 +12,7 @@
 {% endif %}
 <div>
 	<a title="{{provider.name}}" class="socialaccount_provider {{provider.name}} {{provider.id}} btn btn-outline-danger my-3 p-2 fs-4 col-11"
-		href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"> Login With {{provider.name}}
+		href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"> Continue With {{provider.name}}
 		<i class="bi bi-{{provider.name|lower}}"></i>
 	</a>
 </div>

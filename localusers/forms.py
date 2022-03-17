@@ -5,6 +5,7 @@ from localusers.models import CustomUser
 
 
 class RegistrationForm(UserCreationForm):
+
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
@@ -12,10 +13,11 @@ class RegistrationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('image', 'username', 'first_name', 'last_name', 'email', 'telephone', 'address')
+        fields = ('username', 'first_name', 'last_name', 'email', 'telephone', 'address')
 
 
 class ProfileUpdateForm(UserChangeForm):
+
     def __init__(self, *args, **kwargs):
         super(ProfileUpdateForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
@@ -30,11 +32,15 @@ class ProfileUpdateForm(UserChangeForm):
     )
     class Meta(UserChangeForm):
         model = CustomUser
-        fields = ('image', 'username', 'first_name', 'last_name', 'email', 'telephone', 'address')
+        fields = ('username', 'first_name', 'last_name', 'email', 'telephone', 'address')
 
 
 class AdminProfileUpdateForm(UserChangeForm):
-    
+    def __init__(self, *args, **kwargs):
+        super(AdminProfileUpdateForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+
 
     password = forms.CharField(
         help_text="",
@@ -46,4 +52,4 @@ class AdminProfileUpdateForm(UserChangeForm):
 
     class Meta(UserChangeForm):
         model = CustomUser
-        fields = ('image', 'username', 'first_name', 'last_name', 'email', 'telephone', 'address','is_active', 'is_staff')
+        fields = ('username', 'first_name', 'last_name', 'email', 'telephone', 'address','is_active', 'is_staff')
