@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
 from localusers.models import CustomUser
 
+from django.forms.models import model_to_dict
+
 
 class RegistrationForm(UserCreationForm):
 

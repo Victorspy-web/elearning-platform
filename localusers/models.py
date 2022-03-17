@@ -6,15 +6,17 @@ from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
-    username = models.CharField(max_length=150, unique=True)
-    email = models.EmailField()
     telephone = models.CharField(max_length=15)
-    # image = models.ImageField(upload_to="static/img/admin_profile_images", null=True, blank=True)
-    address = models.CharField(max_length=150, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        return self.email
+        return self.telephone
 
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+
+
+class UserImage(CustomUser):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True, related_name="user_images")
+    image = models.ImageField(upload_to="static/img/admin_profile_images", null=True, blank=True)

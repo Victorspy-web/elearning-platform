@@ -104,6 +104,21 @@ DATABASES = {
     }
 }
 
+# DB_NAME = config('DB_NAME')
+# DB_USERNAME = config('DB_USERNAME')
+# DB_PASSWORD = config('DB_PASSWORD')
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': DB_NAME,
+#         'USER': DB_USERNAME,
+#         'PASSWORD': DB_PASSWORD,
+#         'HOST': 'localhost',
+#         'PORT': 5432
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -144,22 +159,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'home'
-
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'home'
-
-# ACCOUNT_AUTHENTICATION_METHOD = 'username'
-
-ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
-
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'localusers.forms.RegistrationForm'
-
-ACCOUNT_EMAIL_REQUIRED = True
-
-ACCOUNT_EMAIL_VERIFICATION = "optional"
-
 
 
 # Login directions
@@ -213,7 +214,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # EMAIL_HOST_USER = email
 # EMAIL_HOST_PASSWORD = password
 
-# SITE_ID = 1
+SITE_ID = 4
 
 # send emails to terminal
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+ACCOUNT_USERNAME_REQUIRED = False
