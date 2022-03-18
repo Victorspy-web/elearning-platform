@@ -1,6 +1,6 @@
-from django.db import models
-
 from django.contrib.auth.models import AbstractUser
+from django.core import serializers
+from django.db import models
 
 # Create your models here.
 
@@ -17,6 +17,6 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'users'
 
 
-class UserImage(CustomUser):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True, related_name="user_images")
-    image = models.ImageField(upload_to="static/img/admin_profile_images", null=True, blank=True)
+class UserImage(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="images/admin_profile_images", null=True, blank=True)

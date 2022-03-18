@@ -143,15 +143,6 @@ AUTH_USER_MODEL = 'localusers.CustomUser'
 
 # Allauth custom authentication settings
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-        "OPTIONS": {
-            "min_length": 9,
-        },
-    }
-]
-
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
@@ -159,9 +150,30 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+ACCOUNT_FORMS = {
+    'signup': 'localusers.forms.RegistrationForm'
+}
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'localusers.forms.RegistrationForm'
+SOCIALACCOUNT_FORMS = {
+    'signup': 'localusers.forms.SocialRegistrationForm'
+}
 
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_MAX_EMAIL_ADDRESSES = 3
+
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'home'
+
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/login'
+
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 
 
 # Login directions
 LOGIN_URL = '/accounts/login'
@@ -186,15 +198,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# static files
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# media files
 MEDIA_URLS = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -218,6 +233,3 @@ SITE_ID = 4
 
 # send emails to terminal
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-ACCOUNT_USERNAME_REQUIRED = False
