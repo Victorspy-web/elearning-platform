@@ -173,7 +173,7 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'home'
 
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/login'
 
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
 
 # Login directions
 LOGIN_URL = '/accounts/login'
@@ -233,3 +233,24 @@ SITE_ID = 4
 
 # send emails to terminal
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar_Full': [
+            ['Styles', 'Format', 'Font', 'FontSize', 'Bold', 'Italic', 'Underline','Strike', 'Subscript', 'Superscript', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar', 'Iframe'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Indent', 'Outdent'],
+            ['ShowBlocks', 'Maximize'],
+            ['Source', 'Preview', 'Print'],
+
+        ],
+
+        'tabSpaces': 4,
+    },
+
+}

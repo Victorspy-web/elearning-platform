@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Delete Course "{{object.title}}"{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+	<div class="row">
+		<div class="col-md-9 offset-md-2">
+			<h1 class="alert alert-danger text-center">Delete course {{object.title}}</h1>
+			<div class="module">
+				<form action="" method="POST">
+					{% csrf_token %}
+					<p>Are you sure you want to delete "{{ object.title }}"?</p>
+					<input class="btn btn-danger my-4 py-2 col-sm-4" type="submit" value="Confirm">
+					<a class="btn btn-success col-sm-4 py-2" href="{% url 'manage_course_list' %}">Cancel</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

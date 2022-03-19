@@ -3,6 +3,9 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from django.utils.text import slugify
 
 from .fields import OrderField
 
@@ -20,6 +23,10 @@ class Subject(models.Model):
         return self.title
 
 
+@receiver(pre_save, sender=Subject)
+def subject_pre_save(sender, instance, *args, **kwargs):
+    instance.slug = slugify(instance.title)
+
 class Course(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='courses_created')
@@ -33,6 +40,10 @@ class Course(models.Model):
     class Meta:
         ordering = ['title']
 
+
+@receiver(pre_save, sender=Course)
+def subject_pre_save(sender, instance, *args, **kwargs):
+    instance.slug = slugify(instance.title)
 
 class Module(models.Model):
     course = models.ForeignKey(
