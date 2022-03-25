@@ -1,7 +1,7 @@
 {% if request.user.is_authenticated %}
 {% include "partials/messages.html" %}
 <nav class="shadow navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">
             <span class="text-info"><i class="bi bi-vinyl"></i></span>
             <span class="text-info">VEDIN</span><span class="text-danger">TECH</span>
@@ -16,10 +16,7 @@
                     <a class="nav-link" aria-current="page" href="{% url 'home' %}">My Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Cart</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'home' %}">Courses</a>
                 </li>
 
                 <li class="nav-item dropdown me-auto">
@@ -30,8 +27,8 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'course_create' %}">Add Course</a></li>
-                        <li><a class="dropdown-item" href="{% url 'manage_course_list' %}">Manage Course</a></li>
+                        <li><a class="dropdown-item" href="#">Add Course</a></li>
+                        <li><a class="dropdown-item" href="#">Manage Course</a></li>
                     </ul>
                 </li>
                 
@@ -60,7 +57,7 @@
         </div>
         </ul>
         <form class="d-flex my-3">
-            <input class="form-control me-2 px-5 rounded" type="search" placeholder="Search Courses" aria-label="Search">
+            <input class="form-control me-2 rounded search-course-input" type="search" placeholder="Search Courses" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
@@ -85,6 +82,7 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{% url 'account_signup' %}">Sign Up</a>
                 </li>
+                
             </ul>
         </div>
     </div>

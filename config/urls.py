@@ -20,11 +20,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from  localusers.views import home
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home, name='home'),
     path('accounts/', include('allauth.urls')),
-    path('users/', include('localusers.urls')),
-    path('', include('courses.urls')),
 ]
 
 if settings.DEBUG:

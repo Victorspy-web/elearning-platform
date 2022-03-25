@@ -55,9 +55,7 @@ class ProfileUpdateForm(UserChangeForm):
     password = forms.CharField(
         help_text="",
         required=False,
-        widget=forms.HiddenInput(
-
-        )
+        widget=forms.HiddenInput()
     )
 
     class Meta(UserChangeForm):

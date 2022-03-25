@@ -5,15 +5,16 @@
 {% block content %}
 <div class="container my-5">
 	<div class="row">
-		<h1 class="text-center">My courses</h1>
+		<h1 class="text-center mb-4">My courses</h1>
 		<div class="col-md-12">
 			<table class="table bg-white">
 				<thead class="bg-success">
 					<tr class="text-white">
 						<th>Course Name</th>
 						<th>Subjects</th>
-						<th>#</th>
-						<th>#</th>
+						<th></th>
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,6 +27,9 @@
 						</td>
 						<td>
 							<a class="btn btn-success btn-sm" href="{% url 'course_delete' course.id %}">Delete</a>
+						</td>
+						<td>
+							<a class="btn btn-success btn-sm" href="{% url 'course_module_update' course.id %}">Edit Modules</a>
 						</td>
 					</tr>
 					{% endfor %}

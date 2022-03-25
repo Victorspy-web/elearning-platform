@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Edit "{{ course.title }}{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<h1 class="mb-5">Edit "{{ course.title }}"</h1>
+			<div class="module">
+				<h2>Course Modules</h2>
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ formset.as_p }}
+					{{ formset.management_form }}
+					{{ formset.media }}
+					<input class="btn btn-success col-md-6 py-1 fs-4" type="submit" value="Save Module">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	let field1 = document.getElementById('id_modules-0-title')
+	let field2 = document.getElementById('id_modules-1-title')
+
+	field1.classList.add('form-control')
+	field2.classList.add('form-control')
+</script>
+
+{% endblock content %}
