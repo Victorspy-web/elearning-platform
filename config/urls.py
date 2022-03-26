@@ -24,8 +24,8 @@ from  localusers.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
     path('accounts/', include('allauth.urls')),
+    path('', include('courses.urls'))
 ]
 
 if settings.DEBUG:

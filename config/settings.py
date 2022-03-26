@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # my apps
     'localusers.apps.LocalusersConfig',
+    'courses.apps.CoursesConfig',
 
     # allauth social authentication
     'allauth',
